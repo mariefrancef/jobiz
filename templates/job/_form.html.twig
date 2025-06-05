@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Postuler à {{ job.title }}{% endblock %}
+
+{% block body %}
+<div class="container mx-auto max-w-xl bg-white p-6 rounded shadow mt-10">
+    <h1 class="text-2xl font-semibold mb-4">Postuler à : {{ job.title }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.coverLetter) }}
+        <button class="bg-teal-600 text-white px-4 py-2 rounded mt-4">Envoyer la candidature</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

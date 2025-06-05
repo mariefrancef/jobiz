@@ -76,7 +76,7 @@
 
   <h3>Salaire :</h3>
   <p>{{ job.salaryMin }}€ - {{ job.salaryMax }}€</p>
-
+  <a href="{{ path('job_apply', { id: job.id }) }}" class="bg-teal-600 text-white px-4 py-2 rounded">Postuler</a>
   <a href="{{ path('app_home') }}" class="back-link">← Retour aux offres</a>
 </div>
 

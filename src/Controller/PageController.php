@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\JobApplication;
+use App\Entity\Job;
+use App\Form\ApplicationForm;
 use App\Repository\JobRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -45,6 +50,36 @@ final class PageController extends AbstractController
         }
 
         return $this->render('job/show.html.twig', [
+            'job' => $job,
+        ]);
+    }
+
+    #[Route('/offre/{id}/postuler', name: 'job_apply')]
+    public function apply(
+        Job $job,
+        Request $request,
+        EntityManagerInterface $em
+    ): Response {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $application = new JobApplication();
+        $application->setJob($job);
+        $application->setCandidate($this->getUser());
+        $application->setCreatedAt(new \DateTimeImmutable());
+
+        $form = $this->createForm(ApplicationForm::class, $application);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($application);
+            $em->flush();
+
+            $this->addFlash('success', 'Votre candidature a bien été envoyée.');
+            return $this->redirectToRoute('app_offers'); // ou détail du job
+        }
+
+        return $this->render('job/_form.html.twig', [
+            'form' => $form->createView(),
             'job' => $job,
         ]);
     }
