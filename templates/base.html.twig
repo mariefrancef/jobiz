@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Jobiz{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
         {% endblock %}
@@ -12,6 +12,29 @@
         {% endblock %}
     </head>
     <body>
+    <header class="text-gray-400 bg-gray-950 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0" href="#">
+            <img width="120" src="{{ asset('images/logo-jobiz.png') }}" alt="Jobiz">
+          </a>         
+          <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+            <a class="mr-5 hover:text-white" href="#">Accueil</a>
+            <a class="mr-5 hover:text-white" href="#">Offres</a>
+            <a class="mr-5 hover:text-white" href="#">A Propos</a>
+
+          </nav>
+
+
+          
+
+
+
+
+          <a class="inline-flex items-center bg-gray-800 border-0 py-2 px-3 ml-10 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0" href="#">Login
+           
+          </a>
+        </div>
+ </header>
         {% block body %}{% endblock %}
     </body>
 </html>
