@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CompanyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,8 +31,16 @@ class Company
     #[ORM\Column(length: 255)]
     private ?string $country = null;
 
-    #[ORM\OneToOne(mappedBy: 'company', cascade: ['persist', 'remove'])]
-    private ?Job $job = null;
+    /**
+     * @var Collection<int, Job>
+     */
+    #[ORM\OneToMany(targetEntity: Job::class, mappedBy: 'company', orphanRemoval: true)]
+    private Collection $jobs;
+
+    public function __construct()
+    {
+        $this->jobs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -97,20 +107,34 @@ class Company
         return $this;
     }
 
-    public function getJob(): ?Job
+    /**
+     * @return Collection<int, Job>
+     */
+    public function getJobs(): Collection
     {
-        return $this->job;
+        return $this->jobs;
     }
 
-    public function setJob(Job $job): static
+    public function addJob(Job $job): static
     {
-        // set the owning side of the relation if necessary
-        if ($job->getCompany() !== $this) {
+        if (!$this->jobs->contains($job)) {
+            $this->jobs->add($job);
             $job->setCompany($this);
         }
 
-        $this->job = $job;
+        return $this;
+    }
+
+    public function removeJob(Job $job): static
+    {
+        if ($this->jobs->removeElement($job)) {
+            // set the owning side to null (unless already changed)
+            if ($job->getCompany() === $this) {
+                $job->setCompany(null);
+            }
+        }
 
         return $this;
     }
+
 }
