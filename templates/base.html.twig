@@ -21,17 +21,16 @@
             <a class="mr-5 hover:text-white" href="{{ path('app_home') }}">Accueil</a>
             <a class="mr-5 hover:text-white" href="#">Offres</a>
             <a class="mr-5 hover:text-white" href="{{ path('app_about') }}">A Propos</a>
-
           </nav>
 
-          <a class="inline-flex items-center bg-gray-800 border-0 py-2 px-3 ml-10 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0" href="#">Login
+          <a class="inline-flex items-center bg-gray-800 border-0 py-2 px-3 ml-10 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0" href="#">Connexion
            
           </a>
-          {% if app.User %}
-                <a class="inline-flex items-center bg-gray-800 border-0 py-2 px-3 ml-10 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0" href="{{ path('app_logout') }}">Déconnexion</a>
-{% else %}
-                <a class="inline-flex items-center bg-gray-800 border-0 py-2 px-3 ml-10 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0" href="{{ path('app_login') }}">Connexion </a>
-{% endif %}
+        {% if app.User %}
+            <a class="inline-flex items-center bg-gray-800 border-0 py-2 px-3 ml-10 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0" href="{{ path('app_logout') }}">Déconnexion</a>
+        {% else %}
+            <a class="inline-flex items-center bg-gray-800 border-0 py-2 px-3 ml-10 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0" href="{{ path('app_login') }}">Connexion </a>
+        {% endif %}
 
 {% if is_granted('ROLE_ADMIN') %}
      <a class="inline-flex items-center bg-gray-800 border-0 py-2 px-3 ml-10 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0" href="{{ path('admin') }}">Admin</a>

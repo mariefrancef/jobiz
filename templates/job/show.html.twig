@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'offre - {{ job.title }}{% endblock %}
+{% block stylesheets %}
+<style>
+  body {
+    background-color: #e5e7eb; /* gris clair */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  }
+
+  .job-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 2rem 3rem;
+    max-width: 600px;
+    width: 100%;
+    color: #1f2937; /* gris foncé */
+    margin: 1rem;
+  }
+
+  h1 {
+    color: #059669; /* vert */
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+
+  a.back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #059669;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  a.back-link:hover {
+    background-color: #047857;
+  }
+</style>
+{% endblock %}
+
+
+
+{% block body %}
+<div class="job-card">
+  <h1>{{ job.title }}</h1>
+  <h3>Entreprise : {{ job.company.name }}</h3>
+  <h3>Type : {{ job.jobType.name }}</h3>
+  <h3>Lieu : {{ job.city }}, {{ job.country }}</h3>
+  <h3>Remote : {{ job.remoteAllowed ? 'Oui' : 'Non' }}</h3>
+  <h3>Catégories :</h3>
+  <p>
+    {% for category in job.jobCategory %}
+      {{ category.name }}{% if not loop.last %}, {% endif %}
+    {% else %}
+      Aucune
+    {% endfor %}
+  </p>
+  <h3>Description :</h3>
+  <p>{{ job.description }}</p>
+
+  <h3>Salaire :</h3>
+  <p>{{ job.salaryMin }}€ - {{ job.salaryMax }}€</p>
+
+  <a href="{{ path('app_home') }}" class="back-link">← Retour aux offres</a>
+</div>
+
+{% endblock %}

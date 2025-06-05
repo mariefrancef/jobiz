@@ -1,9 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PageController!{% endblock %}
+{% block title %}Accueil - Jobiz{% endblock %}
+
+{% block stylesheets %}
+<style>
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .job-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.2rem;
+    width: 320px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .job-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: #0d9488;
+  }
+
+  .job-company {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .job-info {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .job-salary {
+    margin-top: auto;
+    font-weight: 600;
+    color: #059669;
+  }
+</style>
+{% endblock %}
 
 {% block body %}
+<h1 class="text-center text-white mt-8 mb-6">Toutes les offres d'emploi</h1>
 
-
-
+<div class="cards-container">
+  {% for job in jobs %}
+    <div class="job-card">
+      <div class="job-title">{{ job.title }}</div>
+      <div class="job-company">{{ job.company.name }}</div>
+      <div class="job-info"><strong>Type :</strong> {{ job.jobType.name }}</div>
+      <div class="job-info"><strong>Lieu :</strong> {{ job.city }}, {{ job.country }}</div>
+      <div class="job-info"><strong>Remote :</strong> {{ job.remoteAllowed ? 'Oui' : 'Non' }}</div>
+      <div class="job-info"><strong>Catégories :</strong> 
+        {% for category in job.jobCategory %}
+          {{ category.name }}{% if not loop.last %}, {% endif %}
+        {% else %}
+          Aucune
+        {% endfor %}
+      </div>
+      <div class="job-salary">Salaire : {{ job.salaryMin }}€ - {{ job.salaryMax }}€</div>
+      <a href="{{ path('app_job_show', {'id': job.id}) }}" class="btn btn-info" style="margin-top: 1rem; display: inline-block;">Plus d'infos</a>
+    </div>
+  {% else %}
+    <p class="text-white">Aucune offre disponible pour le moment.</p>
+  {% endfor %}
+</div>
 {% endblock %}
