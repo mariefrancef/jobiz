@@ -12,10 +12,19 @@ final class PageController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(JobRepository $jobRepository): Response
     {
-        // Récupération de toutes les offres
+        $latestJobs = $jobRepository->findBy([], ['createdAt' => 'DESC'], 5);
+
+        return $this->render('page/home.html.twig', [
+            'latestJobs' => $latestJobs,
+        ]);
+    }
+
+    #[Route('/offres', name: 'app_offers')]
+    public function offers(JobRepository $jobRepository): Response
+    {
         $jobs = $jobRepository->findAll();
 
-        return $this->render('page/index.html.twig', [
+        return $this->render('page/offers.html.twig', [
             'jobs' => $jobs,
         ]);
     }
