@@ -40,10 +40,6 @@ class Job
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\OneToOne(inversedBy: 'job', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Company $company = null;
-
     /**
      * @var Collection<int, JobCategory>
      */
@@ -58,6 +54,10 @@ class Job
 
     #[ORM\ManyToOne(inversedBy: 'jobs')]
     private ?JobType $jobType = null;
+
+    #[ORM\ManyToOne(inversedBy: 'jobs')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Company $company = null;
 
     public function __construct()
     {
@@ -166,18 +166,6 @@ class Job
         return $this;
     }
 
-    public function getCompany(): ?Company
-    {
-        return $this->company;
-    }
-
-    public function setCompany(Company $company): static
-    {
-        $this->company = $company;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, JobCategory>
      */
@@ -240,6 +228,18 @@ class Job
     public function setJobType(?JobType $jobType): static
     {
         $this->jobType = $jobType;
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Company $company): static
+    {
+        $this->company = $company;
 
         return $this;
     }
