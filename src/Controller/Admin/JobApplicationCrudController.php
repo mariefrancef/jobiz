@@ -15,7 +15,7 @@ class JobApplicationCrudController extends AbstractCrudController
         return JobApplication::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -24,5 +24,5 @@ class JobApplicationCrudController extends AbstractCrudController
             TextEditorField::new('description'),
         ];
     }
-    */
+    
 }

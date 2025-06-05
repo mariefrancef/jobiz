@@ -15,7 +15,7 @@ class JobCategoryCrudController extends AbstractCrudController
         return JobCategory::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -24,5 +24,5 @@ class JobCategoryCrudController extends AbstractCrudController
             TextEditorField::new('description'),
         ];
     }
-    */
+    
 }

@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 
 class CompanyCrudController extends AbstractCrudController
 {
@@ -28,8 +29,7 @@ class CompanyCrudController extends AbstractCrudController
     }
 }
 
-    /*
-    public function configureFields(string $pageName): iterable
+    function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id'),
@@ -37,5 +37,5 @@ class CompanyCrudController extends AbstractCrudController
             TextEditorField::new('description'),
         ];
     }
-    */
+    
 

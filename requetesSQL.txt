@@ -1,0 +1,52 @@
+-- 1. Insert des entreprises
+INSERT INTO company (id, name, description, address, city, country) VALUES
+(1, 'TechNova', 'Entreprise spécialisée en IA et cloud computing.', '12 rue des Écoles', 'Paris', 'France'),
+(2, 'CodeCraft', 'Agence de développement sur mesure.', '85 boulevard Haussmann', 'Lyon', 'France'),
+(3, 'SoftBridge', 'Solutions SaaS pour entreprises.', '1 Silicon Valley', 'San Francisco', 'USA'),
+(4, 'AlgoWorks', 'Recherche avancée en algorithmique.', '22 chemin des Sciences', 'Montréal', 'Canada'),
+(5, 'NextDev', 'Startup tech dynamique.', '5 place du Numérique', 'Bruxelles', 'Belgique');
+
+-- 2. Insert des types de contrat
+INSERT INTO job_type (id, name) VALUES
+(1, 'Temps plein'),
+(2, 'Temps partiel'),
+(3, 'Stage'),
+(4, 'Freelance'),
+(5, 'Intérim'),
+(6, 'CDD');
+
+-- 3. Insert des catégories
+INSERT INTO job_category (id, name) VALUES
+(1, 'Développement Web'),
+(2, 'Science et analyse des données'),
+(3, 'Réseau et sécurité'),
+(4, 'Administration système'),
+(5, 'DevOps'),
+(6, 'IA et Machine Learning');
+
+-- 4. Insert des jobs
+INSERT INTO job (company_id, job_type_id, title, description, country, city, remote_allowed, salary_min, salary_max, created_at) VALUES
+(1, 1, 'Développeur Fullstack Symfony/React', 'Travail sur une application métier complète.', 'France', 'Paris', 1, 35000, 50000, NOW()),
+(2, 3, 'Stagiaire Data Analyst', 'Analyse de données clients.', 'France', 'Lyon', 1, 10000, 15000, NOW()),
+(3, 1, 'Ingénieur DevOps', 'Mise en place de pipelines CI/CD.', 'USA', 'San Francisco', 1, 60000, 80000, NOW()),
+(4, 1, 'Développeur Backend Node.js', 'API et microservices.', 'Belgique', 'Bruxelles', 1, 40000, 55000, NOW()),
+(5, 2, 'Administrateur systèmes junior', 'Gestion des serveurs Linux.', 'France', 'Marseille', 0, 32000, 40000, NOW()),
+(2, 4, 'Développeur Freelance Vue.js', 'Mission 3 mois sur projet e-commerce.', 'France', 'Remote', 1, 30000, 30000, NOW()),
+(4, 1, 'Data Scientist', 'Modélisation prédictive sur données clients.', 'Canada', 'Montréal', 1, 50000, 75000, NOW()),
+(5, 5, 'Technicien Réseau', 'Interventions et support sur site.', 'France', 'Toulouse', 0, 28000, 32000, NOW()),
+(1, 6, 'Administrateur Système CDD', 'Remplacement 6 mois.', 'France', 'Nice', 0, 35000, 42000, NOW()),
+(3, 1, 'ML Engineer', 'Création de modèles d’apprentissage automatique.', 'USA', 'San Francisco', 1, 70000, 90000, NOW());
+
+-- 5. Liaisons des jobs avec les catégories (job_job_category)
+INSERT INTO job_job_category (job_id, job_category_id) VALUES
+(1, 1),
+(2, 2),
+(3, 5),
+(4, 1),
+(5, 4),
+(6, 1),
+(7, 2),
+(7, 6),
+(8, 3),
+(9, 4),
+(10, 6);
