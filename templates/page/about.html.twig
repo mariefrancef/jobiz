@@ -1,21 +1,48 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}A Propos - Jobiz{% endblock %}
 {% block body %}
-<section class="text-gray-400 bg-gray-900 body-font">
-  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-    <img
-      class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
-      src="{{ asset('images/logo-jobiz.png') }}"
-      alt="Jobiz" />
-    <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
-        A propos
-      </h1>
-      <p class="leading-relaxed mb-8">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis eget nulla eget congue. Duis dui lectus, placerat non sapien non, hendrerit consequat neque. Nullam et consequat mi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis sit amet iaculis augue. Morbi eu augue lacus. Nam nunc turpis, imperdiet eu porta nec, efficitur sed mauris. Duis mollis gravida tortor et lacinia.
-        Sed ac ligula a ipsum malesuada consequat dignissim a est. Aenean mi arcu, maximus vitae efficitur eget, scelerisque ut sem. Duis sagittis, nibh at molestie dignissim, ligula turpis convallis felis, ut ultrices orci tortor nec ex. Vivamus id lacinia felis. Praesent commodo ex lectus, ut dictum felis ullamcorper a. Aenean feugiat felis hendrerit, mollis tortor eu, volutpat eros. Pellentesque laoreet mauris ac suscipit vehicula. Sed et ligula ornare, posuere leo ac, tincidunt erat. Phasellus at diam sit amet ipsum vestibulum congue. Vivamus nec luctus odio, in viverra massa. Nullam vel dictum nisl. Curabitur aliquet orci augue. Nullam at sapien eleifend, gravida purus at, ullamcorper enim. In vel faucibus felis. Vivamus iaculis sem in rutrum cursus. Etiam pellentesque molestie dui, eget ultrices tortor tristique at.
-      </p>
-    </div>
+
+<div class="max-w-4xl mx-auto px-4 py-12">
+
+    
+
+    <p class="mb-6 text-lg text-dark-700">
+        Bienvenue sur <strong>Jobiz</strong>, votre plateforme dédiée à la recherche d'emploi intelligente et simple.
+        Nous aidons les candidats à trouver rapidement des offres adaptées à leurs compétences et préférences,
+        tout en fournissant aux recruteurs un outil performant pour gérer leurs annonces.
+    </p>
+ 
+<img
+class="lg:w-4/6 object-cover object-center rounded mx-auto mb-8"
+src="{{ asset('images/portrait-d-homme-souriant-assis-dans-un-cafe-bar-avec-son-ordinateur-portable.jpg') }}"
+alt="Jobiz" />
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+  <div class="text-center">
+    <h2 class="text-2xl font-semibold mb-2">Collaboration</h2>
+    <p class="text-black-600">
+      Nous croyons au pouvoir de la collaboration entre candidats et recruteurs pour créer des opportunités mutuelles.
+    </p>
   </div>
-</section>
+
+  <div class="text-center">
+    <h2 class="text-2xl font-semibold mb-2">Recherche efficace</h2>
+    <p class="text-black-600">
+      Grâce à nos filtres avancés, trouvez rapidement l'emploi qui correspond parfaitement à vos attentes.
+    </p>
+  </div>
+
+  <div class="text-center">
+    <h2 class="text-2xl font-semibold mb-2">Sécurité & confidentialité</h2>
+    <p class="text-black-600">
+      Vos données sont protégées avec soin. Nous assurons la confidentialité de toutes vos informations personnelles.
+    </p>
+  </div>
+</div>
+</div>
+
+<p class="text-black-700 text-center">
+  <strong>Jobiz</strong> est développé avec passion par une équipe dédiée à améliorer l'expérience de la recherche d'emploi.
+  Nous sommes constamment à l'écoute des retours utilisateurs pour faire évoluer la plateforme.
+</p>
 {% endblock %}
